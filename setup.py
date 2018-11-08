@@ -1,10 +1,10 @@
 import setuptools
 
 setuptools.setup(
-    name='pyduck',
+    name='duckpy',
     version='1.0.0',
     packages=setuptools.find_packages(),
-    url='https://github.com/AmanoTeam/pyduck',
+    url='https://github.com/AmanoTeam/duckpy',
     author='Amano Team',
     author_email='contact@amanoteam.ml',
     description='A simple module that searches on DuckDuckGo',

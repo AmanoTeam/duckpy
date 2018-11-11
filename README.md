@@ -1,5 +1,5 @@
 <h6 align="center">
-  <img src="https://i.imgur.com/h9E12nz.png" alt="DuckPy" height="300px">
+  <img src="https://i.imgur.com/WyjAm8t.png" alt="DuckPy" height="250px">
   <h5 align="center">A simple Python module that searches on DuckDuckGo.</h5>
 </h6>
 

@@ -5,4 +5,27 @@
 
 
 ## How to use It?
-soon
+To use DuckPy is easy, let's start:
+
+### First example:
+
+```python
+import duckpy
+
+search = duckpy.search("test")
+
+# Prints first result title
+print(search["results"][0]["title"])
+
+# Prints first result URL
+print(search["results"][0]["url"])
+
+# Prints first result description
+print(search["results"][0]["description"])
+```
+The result will be like this:
+```
+Find online tests, practice test, and test creation software ...
+https://www.test.com/
+Online tests and testing for certification, practice tests, test making tools, medical testing and more.
+```

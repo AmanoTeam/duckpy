@@ -4,8 +4,25 @@
 </h6>
 
 
-## How to use It?
-To use DuckPy is easy, let's start:
+## Installation:
+
+Duckpy can be installed using pip from PyPI or from GitHub
+
+#### via PyPI using pip:
+
+```bash
+pip install -U duckpy
+```
+
+#### via GitHub using pip+git:
+
+```bash
+pip install -U git+https://github.com/AmanoTeam/duckpy
+```
+
+## Usage:
+
+To use duckpy is easy, but let's see some examples:
 
 ### First example:
 
@@ -23,7 +40,9 @@ print(search["results"][0]["url"])
 # Prints first result description
 print(search["results"][0]["description"])
 ```
+
 The result will be like this:
+
 ```
 Find online tests, practice test, and test creation software ...
 https://www.test.com/

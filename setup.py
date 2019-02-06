@@ -5,7 +5,7 @@ with open('README.md') as f:
 
 setuptools.setup(
     name='duckpy',
-    version='1.2.1',
+    version='1.2.2',
     packages=setuptools.find_packages(),
     install_requires=['bs4', 'urllib3', 'certifi'],
     url='https://github.com/AmanoTeam/duckpy',

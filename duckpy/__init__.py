@@ -1,9 +1,13 @@
+import certifi
 import urllib3
 from urllib.parse import unquote
 from bs4 import BeautifulSoup
 
 
-http = urllib3.PoolManager()
+http = urllib3.PoolManager(
+    cert_reqs='CERT_REQUIRED',
+    ca_certs=certifi.where()
+)
 
 
 def search(query, **kwargs):

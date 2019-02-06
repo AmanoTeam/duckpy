@@ -1,11 +1,14 @@
-import requests
+import urllib3
 from urllib.parse import unquote
 from bs4 import BeautifulSoup
 
 
+http = urllib3.PoolManager()
+
+
 def search(query, **kwargs):
-	r = requests.get('https://duckduckgo.com/html', params=dict(q=query, **kwargs))
-	soup = BeautifulSoup(r.text, "html.parser")
+	r = http.request('GET', 'https://duckduckgo.com/html', fields=dict(q=query, **kwargs))
+	soup = BeautifulSoup(r.data, "html.parser")
 	results = []
 	for i in soup.find_all('div', {'class': 'links_main'}):
 		try:

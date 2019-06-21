@@ -8,13 +8,13 @@
 
 Duckpy can be installed using pip from PyPI or from GitHub
 
-#### via PyPI using pip:
+#### via PyPI:
 
 ```bash
 pip install -U duckpy
 ```
 
-#### via GitHub using pip+git:
+#### via GitHub (requires git installed):
 
 ```bash
 pip install -U git+https://github.com/AmanoTeam/duckpy

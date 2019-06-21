@@ -8,15 +8,13 @@ from bs4 import BeautifulSoup
 
 
 class Client:
-    async def __init__(self, proxies=None, random_ua=True):
+    def __init__(self, proxies=None, random_ua=True):
         if isinstance(proxies, type(None)):
             self.proxies = None
         elif isinstance(proxies, str):
             self.proxies = [proxies]
         elif isinstance(proxies, list):
             self.proxies = proxies
-
-        self.http = await aiohttp.ClientSession()
 
         self.random_ua = random_ua
 
@@ -28,7 +26,8 @@ class Client:
         else:
             headers = None
 
-        r = await self.http.get(ddg_url, fields=dict(q=query, **kwargs), headers=headers)
-        data = await r.read()
+        async with aiohttp.ClientSession() as session:
+            r = await session.get(ddg_url, params=dict(q=query, **kwargs), headers=headers)
+            data = await r.read()
 
         return parse_page(data)

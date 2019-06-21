@@ -5,10 +5,10 @@ with open('README.md') as f:
 
 setuptools.setup(
     name='duckpy',
-    version='1.2.3',
+    version='2.0.0',
 
-    packages=['duckpy'],
-    install_requires=['bs4', 'urllib3', 'certifi'],
+    packages=['duckpy', 'duckpy.aio'],
+    install_requires=['bs4', 'urllib3', 'aiohttp', 'certifi'],
 
     url='https://github.com/AmanoTeam/duckpy',
 
@@ -17,7 +17,7 @@ setuptools.setup(
 
     license='MIT',
 
-    description='A simple module that searches on DuckDuckGo',
+    description='A simple module for searching on DuckDuckGo',
     long_description=readme,
     long_description_content_type='text/markdown'
 )

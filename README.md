@@ -22,29 +22,83 @@ pip install -U git+https://github.com/AmanoTeam/duckpy
 
 ## Usage:
 
-To use duckpy is easy, but let's see some examples:
+To use duckpy is easy, let's see some examples:
 
-### First example:
+### First example (normal version):
 
 ```python
 import duckpy
 
-search = duckpy.search("test")
+client = duckpy.Client()
+
+search = client.search("Amano Team duckpy")
 
 # Prints first result title
-print(search["results"][0]["title"])
+print(search[0]["title"])
 
 # Prints first result URL
-print(search["results"][0]["url"])
+print(search[0]["url"])
 
 # Prints first result description
-print(search["results"][0]["description"])
+print(search[0]["description"])
 ```
 
-The result will be like this:
+The result:
 
 ```
-Find online tests, practice test, and test creation software ...
-https://www.test.com/
-Online tests and testing for certification, practice tests, test making tools, medical testing and more.
+GitHub - AmanoTeam/duckpy: A simple Python module that ...
+https://github.com/AmanoTeam/duckpy
+A simple Python module that searches on DuckDuckGo - AmanoTeam/duckpy
 ```
+
+### First example (asyncio version):
+
+```python
+import asyncio
+import duckpy.aio
+
+client = duckpy.aio.Client()
+
+async def get_results():
+  search = await client.search("Amano Team duckpy")
+
+  # Prints first result title
+  print(search[0]["title"])
+
+  # Prints first result URL
+  print(search[0]["url"])
+
+  # Prints first result description
+  print(search[0]["description"])
+
+
+loop = asyncio.get_event_loop()
+loop.run_until_complete(get_results())
+```
+
+The result:
+
+```
+GitHub - AmanoTeam/duckpy: A simple Python module that ...
+https://github.com/AmanoTeam/duckpy
+A simple Python module that searches on DuckDuckGo - AmanoTeam/duckpy
+```
+
+
+# Advanced usage:
+
+You can also set up proxies and/or enable or disable random User-Agents depending on your needs.
+
+## Setting up proxies:
+
+You can pass a list with proxies on the Client object, then duckpy will use these proxies to make requests.
+
+#### Example:
+
+```python
+import duckpy
+
+client = duckpy.Client(proxies=['http://123.45.67.89:80', 'https://123.45.67.89:443'])
+```
+
+If you pass more than one proxy, them will be randomly chosen every time you use the .search() method.

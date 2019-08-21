@@ -1,20 +1,18 @@
 <h6 align="center">
   <img src="https://i.imgur.com/o5qAbVt.png" alt="DuckPy" height="250px">
-  <h5 align="center">A simple Python module that searches on DuckDuckGo.</h5>
+  <h5 align="center">A simple Python module for searching on DuckDuckGo.</h5>
 </h6>
 
 
-## Installation:
+## Installation
 
-Duckpy can be installed using pip from PyPI or from GitHub
-
-#### via PyPI:
+Duckpy can be installed using pip with this command:
 
 ```bash
 pip install -U duckpy
 ```
 
-#### via GitHub (requires git installed):
+#### Alternatively, you can install directly from git:
 
 ```bash
 pip install -U git+https://github.com/AmanoTeam/duckpy
@@ -24,7 +22,7 @@ pip install -U git+https://github.com/AmanoTeam/duckpy
 
 To use duckpy is easy, let's see some examples:
 
-### First example (normal version):
+### First example:
 
 ```python
 import duckpy
@@ -43,15 +41,8 @@ print(search[0]["url"])
 print(search[0]["description"])
 ```
 
-The result:
+We also provide an asynchronous version:
 
-```
-GitHub - AmanoTeam/duckpy: A simple Python module that ...
-https://github.com/AmanoTeam/duckpy
-A simple Python module that searches on DuckDuckGo - AmanoTeam/duckpy
-```
-
-### First example (asyncio version):
 
 ```python
 import asyncio
@@ -81,7 +72,7 @@ The result:
 ```
 GitHub - AmanoTeam/duckpy: A simple Python module that ...
 https://github.com/AmanoTeam/duckpy
-A simple Python module that searches on DuckDuckGo - AmanoTeam/duckpy
+A simple Python module for searching on DuckDuckGo - AmanoTeam/duckpy
 ```
 
 
@@ -91,14 +82,14 @@ You can also set up proxies and/or enable or disable random User-Agents dependin
 
 ## Setting up proxies:
 
-You can pass a list with proxies on the Client object, then duckpy will use these proxies to make requests.
+You can pass a list with proxies in the Client object, then duckpy will use these proxies to make requests.
 
 #### Example:
 
 ```python
 import duckpy
 
-client = duckpy.Client(proxies=['http://123.45.67.89:80', 'https://123.45.67.89:443'])
+client = duckpy.Client(proxies=['123.45.67.89:80', '98.76.54.32:443'])
 ```
 
 If you pass more than one proxy, them will be randomly chosen every time you use the .search() method.

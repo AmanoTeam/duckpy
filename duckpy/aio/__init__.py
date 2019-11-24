@@ -29,7 +29,7 @@ class Client:
             headers = None
 
         async with aiohttp.ClientSession() as session:
-            r = await session.get(ddg_url, params=dict(q=query, **kwargs), headers=headers)
+            r = await session.get(ddg_url, proxy=proxy, params=dict(q=query, **kwargs), headers=headers)
             data = await r.read()
 
         return parse_page(data)

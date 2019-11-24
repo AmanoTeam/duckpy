@@ -22,7 +22,9 @@ class Client:
 
         self.random_ua = random_ua
 
-    def search(self, query, **kwargs):
+    def search(self, query, exact_match=False, **kwargs):
+        if exact_match:
+            query = '"%s"' % query
         if self.proxies:
             proxy = random.choice(self.proxies)
             http = urllib3.ProxyManager(proxy)

@@ -18,7 +18,9 @@ class Client:
 
         self.random_ua = random_ua
 
-    async def search(self, query, **kwargs):
+    async def search(self, query, exact_match=False, **kwargs):
+        if exact_match:
+            query = '"%s"' % query
         if self.proxies:
             proxy = random.choice(self.proxies)
         if self.random_ua:

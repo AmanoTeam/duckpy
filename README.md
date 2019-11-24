@@ -25,20 +25,20 @@ To use duckpy is easy, let's see some examples:
 ### First example:
 
 ```python
-import duckpy
+from duckpy import Client
 
-client = duckpy.Client()
+client = Client()
 
-search = client.search("Amano Team duckpy")
+results = client.search("Amano Team duckpy")
 
 # Prints first result title
-print(search[0]["title"])
+print(results[0]["title"])
 
 # Prints first result URL
-print(search[0]["url"])
+print(results[0]["url"])
 
 # Prints first result description
-print(search[0]["description"])
+print(results[0]["description"])
 ```
 
 We also provide an asynchronous version:
@@ -46,21 +46,21 @@ We also provide an asynchronous version:
 
 ```python
 import asyncio
-import duckpy.aio
+from duckpy.aio import Client
 
-client = duckpy.aio.Client()
+client = Client()
 
 async def get_results():
-  search = await client.search("Amano Team duckpy")
+  results = await client.search("Amano Team duckpy")
 
   # Prints first result title
-  print(search[0]["title"])
+  print(results[0]["title"])
 
   # Prints first result URL
-  print(search[0]["url"])
+  print(results[0]["url"])
 
   # Prints first result description
-  print(search[0]["description"])
+  print(results[0]["description"])
 
 
 loop = asyncio.get_event_loop()

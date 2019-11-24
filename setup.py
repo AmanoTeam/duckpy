@@ -5,7 +5,7 @@ with open('README.md') as f:
 
 setuptools.setup(
     name='duckpy',
-    version='2.0.0',
+    version='2.1.0',
 
     packages=['duckpy', 'duckpy.aio'],
     install_requires=['bs4', 'urllib3', 'aiohttp', 'certifi'],
@@ -13,7 +13,7 @@ setuptools.setup(
     url='https://github.com/AmanoTeam/duckpy',
 
     author='Amano Team',
-    author_email='contact@amanoteam.ml',
+    author_email='contact@amanoteam.com',
 
     license='MIT',
 

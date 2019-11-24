@@ -70,9 +70,9 @@ loop.run_until_complete(get_results())
 The result:
 
 ```
-GitHub - AmanoTeam/duckpy: A simple Python module that ...
+GitHub - AmanoTeam/duckpy: 🦆 A simple Python module for ...
 https://github.com/AmanoTeam/duckpy
-A simple Python module for searching on DuckDuckGo - AmanoTeam/duckpy
+🦆 A simple Python module for searching on DuckDuckGo - AmanoTeam/duckpy
 ```
 
 
@@ -89,7 +89,7 @@ You can pass a list with proxies in the Client object, then duckpy will use thes
 ```python
 import duckpy
 
-client = duckpy.Client(proxies=['123.45.67.89:80', '98.76.54.32:443'])
+client = duckpy.Client(proxies=['http://123.45.67.89:80', 'https://98.76.54.32:443'])
 ```
 
 If you pass more than one proxy, them will be randomly chosen every time you use the .search() method.

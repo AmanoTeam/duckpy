@@ -30,10 +30,7 @@ class Client:
             http = urllib3.ProxyManager(proxy)
         else:
             http = self.http
-        if self.random_ua:
-            headers = {'User-Agent': secrets.token_hex(5) + '/1.0'}
-        else:
-            headers = None
+        headers = {'User-Agent': secrets.token_hex(5) + '/1.0'} if self.random_ua else None
 
         r = http.request('GET', ddg_url, fields=dict(q=query, **kwargs), headers=headers)
 

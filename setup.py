@@ -5,7 +5,7 @@ with open('README.md') as f:
 
 setuptools.setup(
     name='duckpy',
-    version='2.1.0',
+    version='2.1.1',
 
     packages=['duckpy', 'duckpy.aio'],
     install_requires=['bs4', 'urllib3', 'aiohttp', 'certifi'],

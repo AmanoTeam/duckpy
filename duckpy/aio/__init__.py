@@ -21,12 +21,8 @@ class Client:
     async def search(self, query, exact_match=False, **kwargs):
         if exact_match:
             query = '"%s"' % query
-        if self.proxies:
-            proxy = random.choice(self.proxies)
-        if self.random_ua:
-            headers = {'User-Agent': secrets.token_hex(5) + '/1.0'}
-        else:
-            headers = None
+        proxy = random.choice(self.proxies) if self.proxies else None
+        headers = {'User-Agent': secrets.token_hex(5) + '/1.0'} if self.random_ua else None
 
         async with aiohttp.ClientSession() as session:
             r = await session.get(ddg_url, proxy=proxy, params=dict(q=query, **kwargs), headers=headers)

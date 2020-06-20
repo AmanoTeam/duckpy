@@ -8,7 +8,7 @@ setuptools.setup(
     version='2.1.1',
 
     packages=['duckpy', 'duckpy.aio'],
-    install_requires=['bs4', 'urllib3', 'aiohttp', 'certifi'],
+    install_requires=['beautifulsoup4', 'urllib3', 'aiohttp', 'certifi'],
 
     url='https://github.com/AmanoTeam/duckpy',
 

@@ -2,6 +2,7 @@ import random
 import secrets
 import certifi
 import urllib3
+from typing import Union
 from urllib.parse import unquote
 from bs4 import BeautifulSoup
 
@@ -10,7 +11,7 @@ ddg_url = 'https://duckduckgo.com/html'
 
 
 class Client:
-    def __init__(self, proxies=None, random_ua=True):
+    def __init__(self, proxies: Union[list, str] = None, random_ua: bool = True):
         if isinstance(proxies, type(None)):
             self.proxies = None
         elif isinstance(proxies, str):
@@ -22,7 +23,7 @@ class Client:
 
         self.random_ua = random_ua
 
-    def search(self, query, exact_match=False, **kwargs):
+    def search(self, query: str, exact_match: bool = False, **kwargs):
         if exact_match:
             query = '"%s"' % query
         if self.proxies:

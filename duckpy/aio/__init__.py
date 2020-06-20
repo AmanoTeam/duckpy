@@ -2,13 +2,14 @@ import random
 import secrets
 import certifi
 import aiohttp
+from typing import Union
 from .. import parse_page, ddg_url
 from urllib.parse import unquote
 from bs4 import BeautifulSoup
 
 
 class Client:
-    def __init__(self, proxies=None, random_ua=True):
+    def __init__(self, proxies: Union[int, str] = None, random_ua: bool = True):
         if isinstance(proxies, type(None)):
             self.proxies = None
         elif isinstance(proxies, str):
@@ -18,7 +19,7 @@ class Client:
 
         self.random_ua = random_ua
 
-    async def search(self, query, exact_match=False, **kwargs):
+    async def search(self, query: str, exact_match: bool = False, **kwargs):
         if exact_match:
             query = '"%s"' % query
         proxy = random.choice(self.proxies) if self.proxies else None

@@ -1,9 +1,9 @@
-import setuptools
+from setuptools import setup
 
 with open('README.md') as f:
     readme = f.read()
 
-setuptools.setup(
+setup(
     name='duckpy',
     version='2.2.0-dev',
 

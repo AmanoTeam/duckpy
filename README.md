@@ -1,7 +1,9 @@
-<h6 align="center">
+<p align="center">
   <img src="https://i.imgur.com/o5qAbVt.png" alt="DuckPy" height="250px">
   <h5 align="center">A simple Python module for searching on DuckDuckGo.</h5>
-</h6>
+</p>
+
+![PyPI](https://img.shields.io/pypi/v/duckpy) ![GitHub](https://img.shields.io/github/license/AmanoTeam/duckpy)
 
 
 ## Installation
@@ -12,7 +14,7 @@ Duckpy can be installed using pip with this command:
 pip install -U duckpy
 ```
 
-#### Alternatively, you can install directly from git:
+#### Alternatively, you can install the most recent version from git:
 
 ```bash
 pip install -U git+https://github.com/AmanoTeam/duckpy
@@ -41,7 +43,7 @@ print(results[0]["url"])
 print(results[0]["description"])
 ```
 
-We also provide an asynchronous version:
+We also provide an asynchronous version inside the `duckpy.aio` package:
 
 
 ```python

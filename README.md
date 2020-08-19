@@ -76,13 +76,11 @@ Python is an interpreted, high-level, general-purpose programming language. Crea
 
 # Advanced usage:
 
-You can also set up proxies and/or enable or disable random User-Agents depending on your needs.
+You can also set up proxies or set up custom User-Agent strings depending on your needs.
 
 ## Setting up proxies:
 
-You can pass a list with proxies in the Client object, then duckpy will use these proxies to make requests.
-
-#### Example:
+You can pass a list with proxies in the Client object, then duckpy will use these proxies to make requests:
 
 ```python
 import duckpy
@@ -90,4 +88,19 @@ import duckpy
 client = duckpy.Client(proxies=['http://123.45.67.89:80', 'https://98.76.54.32:443'])
 ```
 
-If you pass more than one proxy, them will be randomly chosen every time you use the .search() method.
+If you pass more than one proxy, they will be randomly chosen every time you use the .search() method.
+
+## Setting up custom User-Agents:
+
+```python
+import duckpy
+
+user_agents = [
+  "Mozilla/5.0 (X11; Linux x86_64; rv:79.0) Gecko/20100101 Firefox/79.0",
+  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36"
+]
+
+client = duckpy.Client(default_user_agents=user_agents)
+```
+
+Again, if you pass more than one User-Agent, they will be randomly chosen every time you use the .search() method.

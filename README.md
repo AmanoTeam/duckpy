@@ -1,6 +1,6 @@
 <p align="center">
   <img src="https://i.imgur.com/o5qAbVt.png" alt="DuckPy" height="250px">
-  <h5 align="center">A simple Python module for searching on DuckDuckGo.</h5>
+  <h4 align="center">A simple Python module for searching on DuckDuckGo.</h4>
 </p>
 
 ![PyPI](https://img.shields.io/pypi/v/duckpy) ![GitHub](https://img.shields.io/github/license/AmanoTeam/duckpy)
@@ -104,3 +104,7 @@ client = duckpy.Client(default_user_agents=user_agents)
 ```
 
 Again, if you pass more than one User-Agent, they will be randomly chosen every time you use the .search() method.
+
+# Disclaimer
+
+We are not affiliated, associated, authorized, endorsed by, or in any way officially connected with DuckDuckGo, or any of its subsidiaries or its affiliates. The official DuckDuckGo website can be found at https://duckduckgo.com.

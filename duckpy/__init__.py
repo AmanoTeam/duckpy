@@ -33,7 +33,7 @@ class Client(BaseClient):
         headers = {'User-Agent': ua} if ua else None
 
         with httpx.Client(proxies=proxy) as http:
-            r = http.post(ddg_url, params=dict(q=query, **kwargs), headers=headers)
+            r = http.post(ddg_url, data=dict(q=query, **kwargs), headers=headers)
             data = r.read()
 
             return parse_page(data)
@@ -58,7 +58,7 @@ class AsyncClient(BaseClient):
         headers = {'User-Agent': ua} if ua else None
 
         async with httpx.AsyncClient(proxies=proxy) as http:
-            r = await http.post(ddg_url, params=dict(q=query, **kwargs), headers=headers)
+            r = await http.post(ddg_url, data=dict(q=query, **kwargs), headers=headers)
             data = r.read()
 
             return await self.loop.run_in_executor(None, parse_page, data)

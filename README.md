@@ -22,16 +22,12 @@ pip install -U git+https://github.com/AmanoTeam/duckpy
 
 ## Usage:
 
-To use duckpy is easy, let's see some examples:
-
-### First example:
-
 ```python
 from duckpy import Client
 
 client = Client()
 
-results = client.search("Amano Team duckpy")
+results = client.search("Python Wikipedia")
 
 # Prints first result title
 print(results[0]["title"])
@@ -43,17 +39,17 @@ print(results[0]["url"])
 print(results[0]["description"])
 ```
 
-We also provide an asynchronous version inside the `duckpy.aio` package:
+We also provide an asynchronous version inside the `AsyncClient` class:
 
 
 ```python
 import asyncio
-from duckpy.aio import Client
+from duckpy import AsyncClient
 
-client = Client()
+client = AsyncClient()
 
 async def get_results():
-  results = await client.search("Amano Team duckpy")
+  results = await client.search("Python Wikipedia")
 
   # Prints first result title
   print(results[0]["title"])
@@ -72,9 +68,9 @@ loop.run_until_complete(get_results())
 The result:
 
 ```
-GitHub - AmanoTeam/duckpy: 🦆 A simple Python module for ...
-https://github.com/AmanoTeam/duckpy
-🦆 A simple Python module for searching on DuckDuckGo - AmanoTeam/duckpy
+Python (programming language) - Wikipedia
+https://en.wikipedia.org/wiki/Python_(programming_language)
+Python is an interpreted, high-level, general-purpose programming language. Created by Guido van Rossum and first released in 1991...
 ```
 
 

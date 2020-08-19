@@ -7,7 +7,7 @@ from urllib.parse import unquote
 from bs4 import BeautifulSoup
 
 
-ddg_url = 'https://duckduckgo.com/html'
+ddg_url = 'https://html.duckduckgo.com/html'
 
 
 class Client:

@@ -42,7 +42,7 @@ class Client(BaseClient):
 class AsyncClient(BaseClient):
     def __init__(self, proxies: Union[list, str] = None, default_user_agents: Union[list, str] = None, random_ua: bool = None):
         self.loop = asyncio.get_event_loop()
-        super().__init__()
+        super().__init__(proxies=proxies, default_user_agents=default_user_agents, random_ua=random_ua)
 
     async def search(self, query: str, exact_match: bool = False, **kwargs):
         if exact_match:

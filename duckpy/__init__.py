@@ -1,44 +1,70 @@
+import asyncio
 import random
-import secrets
-import certifi
-import urllib3
+import httpx
+from warnings import warn
 from typing import Union
-from urllib.parse import unquote
 from bs4 import BeautifulSoup
 
 
 ddg_url = 'https://html.duckduckgo.com/html'
 
 
-class Client:
-    def __init__(self, proxies: Union[list, str] = None, random_ua: bool = True):
-        if isinstance(proxies, type(None)):
-            self.proxies = None
-        elif isinstance(proxies, str):
-            self.proxies = [proxies]
-        elif isinstance(proxies, list):
-            self.proxies = proxies
+class BaseClient:
+    def __init__(self, proxies: Union[list, str] = None, default_user_agents: Union[list, str] = None, random_ua: bool = None):
+        if random_ua is not None:
+            warn("The random_ua parameter has been deprecated in favor of the default_user_agents parameter and will be removed in a future release.", DeprecationWarning, 2)
 
-        self.http = urllib3.PoolManager(cert_reqs='CERT_REQUIRED', ca_certs=certifi.where())
+        self.proxies = proxies
+        self.default_user_agents = default_user_agents
 
-        self.random_ua = random_ua
 
+class Client(BaseClient):
     def search(self, query: str, exact_match: bool = False, **kwargs):
         if exact_match:
             query = '"%s"' % query
-        if self.proxies:
-            proxy = random.choice(self.proxies)
-            http = urllib3.ProxyManager(proxy)
+
+        proxy = random.choice(self.proxies) if self.proxies else None
+        if isinstance(self.default_user_agents, str):
+            ua = self.default_user_agents
+        elif isinstance(self.default_user_agents, list):
+            ua = random.choice(self.default_user_agents) if self.default_user_agents else None
         else:
-            http = self.http
-        headers = {'User-Agent': secrets.token_hex(5) + '/1.0'} if self.random_ua else None
+            ua = None
+        headers = {'User-Agent': ua} if ua else None
 
-        r = http.request('GET', ddg_url, fields=dict(q=query, **kwargs), headers=headers)
+        with httpx.Client(proxies=proxy) as http:
+            r = http.post(ddg_url, params=dict(q=query, **kwargs), headers=headers)
+            data = r.read()
 
-        return parse_page(r.data)
+            return parse_page(data)
 
 
-def parse_page(html):
+class AsyncClient(BaseClient):
+    def __init__(self, proxies: Union[list, str] = None, default_user_agents: Union[list, str] = None, random_ua: bool = None):
+        self.loop = asyncio.get_event_loop()
+        super().__init__()
+
+    async def search(self, query: str, exact_match: bool = False, **kwargs):
+        if exact_match:
+            query = '"%s"' % query
+
+        proxy = random.choice(self.proxies) if self.proxies else None
+        if isinstance(self.default_user_agents, str):
+            ua = self.default_user_agents
+        elif isinstance(self.default_user_agents, list):
+            ua = random.choice(self.default_user_agents) if self.default_user_agents else None
+        else:
+            ua = None
+        headers = {'User-Agent': ua} if ua else None
+
+        async with httpx.AsyncClient(proxies=proxy) as http:
+            r = await http.post(ddg_url, params=dict(q=query, **kwargs), headers=headers)
+            data = r.read()
+
+            return await self.loop.run_in_executor(None, parse_page, data)
+
+
+def parse_page(html: Union[str, bytes]):
     soup = BeautifulSoup(html, "html.parser")
     results = []
     for i in soup.find_all('div', {'class': 'links_main'}):
@@ -46,7 +72,7 @@ def parse_page(html):
             title = i.h2.a.text
             description = i.find('a', {'class': 'result__snippet'}).text
             url = i.find('a', {'class': 'result__url'}).get('href')
-            results.append(dict(title=title, description=description, url=unquote(url.split("uddg=", 1)[1])))
+            results.append(dict(title=title, description=description, url=url))
         except AttributeError:
             pass
     return results

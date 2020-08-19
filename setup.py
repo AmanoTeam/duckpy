@@ -5,10 +5,10 @@ with open('README.md') as f:
 
 setup(
     name='duckpy',
-    version='2.2.0-dev',
+    version='3.0.0-dev',
 
     packages=['duckpy', 'duckpy.aio'],
-    install_requires=['beautifulsoup4', 'urllib3', 'aiohttp', 'certifi'],
+    install_requires=['beautifulsoup4>=4.9.1', 'httpx==0.14.*'],
 
     url='https://github.com/AmanoTeam/duckpy',
     python_requires='>=3.6',

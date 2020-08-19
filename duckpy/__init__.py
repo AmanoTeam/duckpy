@@ -23,7 +23,12 @@ class Client(BaseClient):
         if exact_match:
             query = '"%s"' % query
 
-        proxy = random.choice(self.proxies) if self.proxies else None
+        if isinstance(self.proxies, str):
+            proxy = self.proxies
+        elif isinstance(self.proxies, list):
+            proxy = random.choice(self.proxies) if self.proxies else None
+        else:
+            proxy = None
         if isinstance(self.default_user_agents, str):
             ua = self.default_user_agents
         elif isinstance(self.default_user_agents, list):
@@ -48,7 +53,12 @@ class AsyncClient(BaseClient):
         if exact_match:
             query = '"%s"' % query
 
-        proxy = random.choice(self.proxies) if self.proxies else None
+        if isinstance(self.proxies, str):
+            proxy = self.proxies
+        elif isinstance(self.proxies, list):
+            proxy = random.choice(self.proxies) if self.proxies else None
+        else:
+            proxy = None
         if isinstance(self.default_user_agents, str):
             ua = self.default_user_agents
         elif isinstance(self.default_user_agents, list):

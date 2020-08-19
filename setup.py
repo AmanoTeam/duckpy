@@ -11,7 +11,7 @@ setup(
     install_requires=['beautifulsoup4', 'urllib3', 'aiohttp', 'certifi'],
 
     url='https://github.com/AmanoTeam/duckpy',
-    python_requires='>=3.5.3',
+    python_requires='>=3.6',
 
     author='Amano Team',
     author_email='contact@amanoteam.com',

@@ -1,4 +1,5 @@
 build/
 dist/
 duckpy.egg-info/
+.venv/
 __pycache__/

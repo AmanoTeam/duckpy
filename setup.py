@@ -8,7 +8,7 @@ setup(
     version='3.0.0-dev',
 
     packages=['duckpy', 'duckpy.aio'],
-    install_requires=['beautifulsoup4>=4.9.1', 'httpx==0.13.*'],
+    install_requires=['beautifulsoup4>=4.9.1', 'httpx==0.14.*', 'httpcore>=0.10.2,<0.11'],
 
     url='https://github.com/AmanoTeam/duckpy',
     python_requires='>=3.6',

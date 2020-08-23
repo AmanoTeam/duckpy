@@ -37,7 +37,7 @@ class Client(BaseClient):
             ua = None
         headers = {'User-Agent': ua} if ua else None
 
-        with httpx.Client(proxies=proxy) as http:
+        with httpx.Client(proxies=proxy, http2=True) as http:
             r = http.post(ddg_url, data=dict(q=query, **kwargs), headers=headers)
             data = r.read()
 
@@ -67,7 +67,7 @@ class AsyncClient(BaseClient):
             ua = None
         headers = {'User-Agent': ua} if ua else None
 
-        async with httpx.AsyncClient(proxies=proxy) as http:
+        async with httpx.AsyncClient(proxies=proxy, http2=True) as http:
             r = await http.post(ddg_url, data=dict(q=query, **kwargs), headers=headers)
             data = r.read()
 

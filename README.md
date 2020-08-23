@@ -19,7 +19,7 @@ pip install -U duckpy
 pip install -U git+https://github.com/AmanoTeam/duckpy
 ```
 
-### If you are using Debian, you can install with this command (Currently only in Debian Unstable)
+### If you are using Debian or Ubuntu, you can install with this command (Currently only in Debian Unstable and Ubuntu 20.10+)
 
 ```bash
 sudo apt install python3-duckpy

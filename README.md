@@ -80,6 +80,8 @@ You can also set up proxies or set up custom User-Agent strings depending on you
 
 ## Setting up proxies:
 
+DuckDuckGo may temporarily block your request IP or return empty results, especially if you are using the library for scraping, bots and other stuff that generate many requests. This is not a duckpy issue and can be prevented using proxies.
+
 You can pass a list with proxies in the Client object, then duckpy will use these proxies to make requests:
 
 ```python

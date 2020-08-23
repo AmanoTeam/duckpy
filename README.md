@@ -5,22 +5,21 @@
 
 ![PyPI](https://img.shields.io/pypi/v/duckpy) ![GitHub](https://img.shields.io/github/license/AmanoTeam/duckpy)
 
-
 ## Installation
 
-#### Duckpy can be installed using pip with this command
+### Duckpy can be installed using pip with this command
 
 ```bash
 pip install -U duckpy
 ```
 
-#### Alternatively, you can install the most recent version from git
+### Alternatively, you can install the most recent version from git
 
 ```bash
 pip install -U git+https://github.com/AmanoTeam/duckpy
 ```
 
-#### If you are using Debian, you can install with this command (Currently only in Debian Unstable)
+### If you are using Debian, you can install with this command (Currently only in Debian Unstable)
 
 ```bash
 sudo apt install python3-duckpy
@@ -47,7 +46,6 @@ print(results[0]["description"])
 
 ### We also provide an asynchronous version inside the `AsyncClient` class
 
-
 ```python
 import asyncio
 from duckpy import AsyncClient
@@ -73,12 +71,11 @@ loop.run_until_complete(get_results())
 
 ### The result
 
-```
+```text
 Python (programming language) - Wikipedia
 https://en.wikipedia.org/wiki/Python_(programming_language)
 Python is an interpreted, high-level, general-purpose programming language. Created by Guido van Rossum and first released in 1991...
 ```
-
 
 ## Advanced usage
 
@@ -115,4 +112,4 @@ Again, if you pass more than one User-Agent, they will be randomly chosen every 
 
 ## Disclaimer
 
-We are not affiliated, associated, authorized, endorsed by, or in any way officially connected with DuckDuckGo, or any of its subsidiaries or its affiliates. The official DuckDuckGo website can be found at https://duckduckgo.com.
+We are not affiliated, associated, authorized, endorsed by, or in any way officially connected with DuckDuckGo, or any of its subsidiaries or its affiliates. The official DuckDuckGo website can be found at <https://duckduckgo.com>.

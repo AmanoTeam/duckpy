@@ -78,6 +78,8 @@ def parse_page(html: Union[str, bytes]):
     soup = BeautifulSoup(html, "html.parser")
     results = []
     for i in soup.find_all('div', {'class': 'links_main'}):
+        if i.find('a', {'class': 'badge--ad'}):
+            continue
         try:
             title = i.h2.a.text
             description = i.find('a', {'class': 'result__snippet'}).text

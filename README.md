@@ -35,13 +35,13 @@ client = Client()
 results = client.search("Python Wikipedia")
 
 # Prints first result title
-print(results[0]["title"])
+print(results[0].title)
 
 # Prints first result URL
-print(results[0]["url"])
+print(results[0].url)
 
 # Prints first result description
-print(results[0]["description"])
+print(results[0].description)
 ```
 
 ### We also provide an asynchronous version inside the `AsyncClient` class
@@ -56,13 +56,13 @@ async def get_results():
   results = await client.search("Python Wikipedia")
 
   # Prints first result title
-  print(results[0]["title"])
+  print(results[0].title)
 
   # Prints first result URL
-  print(results[0]["url"])
+  print(results[0].url)
 
   # Prints first result description
-  print(results[0]["description"])
+  print(results[0].description)
 
 
 loop = asyncio.get_event_loop()

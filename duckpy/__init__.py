@@ -1,6 +1,8 @@
 import asyncio
 import random
 import httpx
+from .types import ResultDict
+from typing import List
 from warnings import warn
 from typing import Union
 from bs4 import BeautifulSoup
@@ -19,7 +21,7 @@ class BaseClient:
 
 
 class Client(BaseClient):
-    def search(self, query: str, exact_match: bool = False, **kwargs):
+    def search(self, query: str, exact_match: bool = False, **kwargs) -> List[ResultDict]:
         if exact_match:
             query = '"%s"' % query
 
@@ -49,7 +51,7 @@ class AsyncClient(BaseClient):
         self.loop = asyncio.get_event_loop()
         super().__init__(proxies=proxies, default_user_agents=default_user_agents, random_ua=random_ua)
 
-    async def search(self, query: str, exact_match: bool = False, **kwargs):
+    async def search(self, query: str, exact_match: bool = False, **kwargs) -> List[ResultDict]:
         if exact_match:
             query = '"%s"' % query
 
@@ -74,7 +76,7 @@ class AsyncClient(BaseClient):
             return await self.loop.run_in_executor(None, parse_page, data)
 
 
-def parse_page(html: Union[str, bytes]):
+def parse_page(html: Union[str, bytes]) -> List[ResultDict]:
     soup = BeautifulSoup(html, "html.parser")
     results = []
     for i in soup.find_all('div', {'class': 'links_main'}):
@@ -84,7 +86,7 @@ def parse_page(html: Union[str, bytes]):
             title = i.h2.a.text
             description = i.find('a', {'class': 'result__snippet'}).text
             url = i.find('a', {'class': 'result__url'}).get('href')
-            results.append(dict(title=title, description=description, url=url))
+            results.append(ResultDict(title=title, description=description, url=url))
         except AttributeError:
             pass
     return results

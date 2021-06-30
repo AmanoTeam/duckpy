@@ -5,7 +5,7 @@ with open('README.md') as f:
 
 setup(
     name='duckpy',
-    version='3.2.0-dev',
+    version='3.2.0',
 
     packages=['duckpy', 'duckpy.aio'],
     install_requires=['beautifulsoup4>=4.9.1', 'httpx[http2]>=0.14,<0.19'],

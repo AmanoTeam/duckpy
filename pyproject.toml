@@ -4,7 +4,7 @@ version = "3.2.0"
 description = "A simple module for searching on DuckDuckGo"
 readme = "README.md"
 
-dependencies = ["beautifulsoup4>=4.9.1", "httpx[http2]>=0.14,<0.19"]
+dependencies = ["beautifulsoup4>=4.9.1", "httpx[http2]>=0.14,<0.24"]
 requires-python = ">=3.6"
 
 authors = [
